@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit/dist/createSlice';
+import { createSlice } from '@reduxjs/toolkit';
 
 type InitialStateType = object;
 const initialState: InitialStateType = {};
