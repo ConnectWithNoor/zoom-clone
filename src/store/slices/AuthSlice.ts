@@ -6,9 +6,11 @@ type InitialStateType = {
     email: string;
     name: string;
   } | null;
+  isDarkTheme: boolean;
 };
 const initialState: InitialStateType = {
   userInfo: null,
+  isDarkTheme: false,
 };
 
 export const authSlice = createSlice({
@@ -24,7 +26,10 @@ export const authSlice = createSlice({
     ) => {
       state.userInfo = action.payload;
     },
+    switchDarkTheme: (state, action) => {
+      state.isDarkTheme = action.payload.isDarkTheme;
+    },
   },
 });
 
-export const { setUser } = authSlice.actions;
+export const { setUser, switchDarkTheme } = authSlice.actions;

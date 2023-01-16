@@ -1,6 +1,5 @@
 import {
   EuiButton,
-  EuiButtonIcon,
   EuiFlexGroup,
   EuiFlexItem,
   EuiHeader,
@@ -11,6 +10,7 @@ import { signOut } from 'firebase/auth';
 import React, { useCallback, useLayoutEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { switchDarkTheme } from '../store/slices/AuthSlice';
 import { firebaseAuth } from '../utils/firebaseConfig';
 
 function Header() {
@@ -18,10 +18,17 @@ function Header() {
   const location = useLocation();
   const dispatch = useAppDispatch();
   const userName = useAppSelector((state) => state.auth.userInfo?.name);
+  const isDarkTheme = useAppSelector((state) => state.auth.isDarkTheme);
 
   const handleLogout = useCallback(() => {
     signOut(firebaseAuth);
   }, []);
+
+  const invertTheme = useCallback(() => {
+    const theme = localStorage.getItem('zoom-theme');
+    localStorage.setItem('zoom-theme', theme === 'light' ? 'dark' : 'light');
+    dispatch(switchDarkTheme({ isDarkTheme: !isDarkTheme }));
+  }, [isDarkTheme, dispatch]);
 
   const sections = useMemo(() => {
     return [
@@ -67,6 +74,18 @@ function Header() {
               style={{ flexBasis: 'flex-content' }}
             >
               <EuiButton
+                onClick={invertTheme}
+                color={`${isDarkTheme ? 'warning' : 'primary'}`}
+              >
+                {isDarkTheme ? 'Light Mode' : 'Dark Mode'}
+              </EuiButton>
+            </EuiFlexItem>
+
+            <EuiFlexItem
+              grow={false}
+              style={{ flexBasis: 'flex-content' }}
+            >
+              <EuiButton
                 onClick={handleLogout}
                 style={{
                   backgroundColor: '#0b5cff',
@@ -81,7 +100,7 @@ function Header() {
         ],
       },
     ];
-  }, [userName, handleLogout]);
+  }, [userName, handleLogout, invertTheme, isDarkTheme]);
 
   const responsiveSection = useMemo(() => {
     return [
@@ -99,8 +118,47 @@ function Header() {
           </Link>,
         ],
       },
+      {
+        items: [
+          <EuiFlexGroup
+            key="2"
+            justifyContent="center"
+            alignItems="center"
+            direction="row"
+            style={{ gap: '2vw' }}
+          >
+            <EuiFlexItem
+              grow={false}
+              style={{ flexBasis: 'flex-content' }}
+            >
+              <EuiButton
+                onClick={invertTheme}
+                color={`${isDarkTheme ? 'warning' : 'primary'}`}
+              >
+                {isDarkTheme ? 'Light Mode' : 'Dark Mode'}
+              </EuiButton>
+            </EuiFlexItem>
+
+            <EuiFlexItem
+              grow={false}
+              style={{ flexBasis: 'flex-content' }}
+            >
+              <EuiButton
+                onClick={handleLogout}
+                style={{
+                  backgroundColor: '#0b5cff',
+                  color: 'white',
+                  fontWeight: 'bold',
+                }}
+              >
+                Logout
+              </EuiButton>
+            </EuiFlexItem>
+          </EuiFlexGroup>,
+        ],
+      },
     ];
-  }, []);
+  }, [handleLogout, invertTheme, isDarkTheme]);
 
   const [breadcrumbs, setBreadcrumbs] = useState([{ text: 'Dashboard' }]);
   const [isResponsive, setIsResponsive] = useState(false);
