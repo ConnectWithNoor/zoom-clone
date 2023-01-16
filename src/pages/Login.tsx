@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {
   EuiButton,
   EuiFlexGroup,
@@ -11,16 +11,25 @@ import {
   EuiTextColor,
 } from '@elastic/eui';
 import { useNavigate } from 'react-router-dom';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+} from 'firebase/auth';
 import { addDoc, getDocs, query, where } from 'firebase/firestore';
 
 import { firebaseAuth, userCollectionRef } from '../utils/firebaseConfig';
+import { useAppDispatch } from '../store/hooks';
+import { setUser } from '../store/slices/AuthSlice';
+import useAuth from '../hooks/useAuth';
 
 const animationUrl = new URL('../assets/animation.gif', import.meta.url).href;
 const logoUrl = new URL('../assets/logo.png', import.meta.url).href;
 
 function Login() {
+  useAuth();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleLogin = useCallback(async () => {
     // get google login popup
@@ -43,8 +52,9 @@ function Login() {
         });
       }
     }
+    dispatch(setUser({ uid, name: displayName!, email: email! }));
     navigate('/');
-  }, [navigate]);
+  }, [navigate, dispatch]);
 
   return (
     <EuiProvider colorMode="DARK">

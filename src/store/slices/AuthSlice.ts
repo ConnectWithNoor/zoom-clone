@@ -1,12 +1,30 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type InitialStateType = object;
-const initialState: InitialStateType = {};
+type InitialStateType = {
+  userInfo: {
+    uid: string;
+    email: string;
+    name: string;
+  } | null;
+};
+const initialState: InitialStateType = {
+  userInfo: null,
+};
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    setUser: (
+      state,
+      action: {
+        payload: InitialStateType['userInfo'];
+        type: string;
+      }
+    ) => {
+      state.userInfo = action.payload;
+    },
+  },
 });
 
-// export const {} = authSlice.actions;
+export const { setUser } = authSlice.actions;

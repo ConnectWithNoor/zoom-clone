@@ -27,6 +27,7 @@ module.exports = {
     'no-param-reassign': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-console': 'warn',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
   settings: {
     react: {
