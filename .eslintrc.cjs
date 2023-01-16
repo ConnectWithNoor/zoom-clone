@@ -26,7 +26,7 @@ module.exports = {
     'no-nested-ternary': 'off',
     'no-param-reassign': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'no-console': 'off',
+    'no-console': 'warn',
   },
   settings: {
     react: {
