@@ -32,7 +32,7 @@ function Dashboard() {
             }
             title="Create Meeting"
             description="Create a new meeting and invite participants."
-            onClick={() => navigate('/create')}
+            onClick={() => navigate('/create-meeting')}
             paddingSize="xl"
           />
         </EuiFlexItem>

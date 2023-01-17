@@ -10,6 +10,7 @@ import '@elastic/eui/dist/eui_theme_light.min.css';
 import '@elastic/eui/dist/eui_theme_dark.min.css';
 import { switchDarkTheme } from './store/slices/AuthSlice';
 import CreateMeeting from './pages/CreateMeeting';
+import OneOnOneMeeting from './pages/OneOnOneMeeting';
 
 const overrides = {
   colors: {
@@ -54,8 +55,13 @@ function App() {
               element={<Login />}
             />
             <Route
-              path="/create"
+              path="/create-meeting"
               element={<CreateMeeting />}
+            />
+
+            <Route
+              path="/create-1-on-1"
+              element={<OneOnOneMeeting />}
             />
 
             <Route
