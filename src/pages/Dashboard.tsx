@@ -63,7 +63,7 @@ function Dashboard() {
             }
             title="Meetings"
             description="View the meetings that you are invited to."
-            onClick={() => navigate('/create')}
+            onClick={() => navigate('/meetings')}
             paddingSize="xl"
           />
         </EuiFlexItem>
