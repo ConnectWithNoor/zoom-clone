@@ -7,22 +7,37 @@ import {
   EuiTextColor,
 } from '@elastic/eui';
 import { signOut } from 'firebase/auth';
-import React, { useCallback, useLayoutEffect, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { switchDarkTheme } from '../store/slices/AuthSlice';
+import { getCreateMeetingsBreadCrumbs } from '../utils/breadCrumbs';
 import { firebaseAuth } from '../utils/firebaseConfig';
 
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
+  const [breadcrumbs, setBreadcrumbs] = useState([{ text: 'Dashboard' }]);
+  const [isResponsive, setIsResponsive] = useState(false);
   const userName = useAppSelector((state) => state.auth.userInfo?.name);
   const isDarkTheme = useAppSelector((state) => state.auth.isDarkTheme);
 
   const handleLogout = useCallback(() => {
     signOut(firebaseAuth);
   }, []);
+
+  useEffect(() => {
+    const { pathname } = location;
+    if (pathname === '/create')
+      setBreadcrumbs(getCreateMeetingsBreadCrumbs(navigate));
+  }, [location, navigate]);
 
   const invertTheme = useCallback(() => {
     const theme = localStorage.getItem('zoom-theme');
@@ -159,9 +174,6 @@ function Header() {
       },
     ];
   }, [handleLogout, invertTheme, isDarkTheme]);
-
-  const [breadcrumbs, setBreadcrumbs] = useState([{ text: 'Dashboard' }]);
-  const [isResponsive, setIsResponsive] = useState(false);
 
   useLayoutEffect(() => {
     if (window.innerWidth <= 480) setIsResponsive(true);

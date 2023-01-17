@@ -19,8 +19,6 @@ function useAuth() {
             name: currentUser.displayName!,
           })
         );
-
-        navigate('/');
       } else {
         navigate('/login');
       }

@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import '@elastic/eui/dist/eui_theme_light.min.css';
 import '@elastic/eui/dist/eui_theme_dark.min.css';
 import { switchDarkTheme } from './store/slices/AuthSlice';
+import CreateMeeting from './pages/CreateMeeting';
 
 const overrides = {
   colors: {
@@ -38,7 +39,6 @@ function App() {
     if (isInitialTheme) {
       setisInitialTheme(false);
     } else {
-      const localTheme = localStorage.getItem('zoom-theme');
       window.location.reload();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,6 +52,10 @@ function App() {
             <Route
               path="/login"
               element={<Login />}
+            />
+            <Route
+              path="/create"
+              element={<CreateMeeting />}
             />
 
             <Route
