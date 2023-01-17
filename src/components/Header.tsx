@@ -20,6 +20,7 @@ import { switchDarkTheme } from '../store/slices/AuthSlice';
 import {
   getCreateMeetingsBreadCrumbs,
   getOneOnOneMeetingBreadCrumbs,
+  getVideoConferenceBreadCrumbs,
 } from '../utils/breadCrumbs';
 import { firebaseAuth } from '../utils/firebaseConfig';
 
@@ -42,6 +43,8 @@ function Header() {
       setBreadcrumbs(getCreateMeetingsBreadCrumbs(navigate));
     else if (pathname === '/create-1-on-1')
       setBreadcrumbs(getOneOnOneMeetingBreadCrumbs(navigate));
+    else if (pathname === '/video-conference')
+      setBreadcrumbs(getVideoConferenceBreadCrumbs(navigate));
   }, [location, navigate]);
 
   const invertTheme = useCallback(() => {

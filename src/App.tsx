@@ -16,6 +16,7 @@ import '@elastic/eui/dist/eui_theme_dark.min.css';
 import CreateMeeting from './pages/CreateMeeting';
 import OneOnOneMeeting from './pages/OneOnOneMeeting';
 import { setToasts } from './store/slices/MeetingSlice';
+import VideoConference from './pages/VideoConference';
 
 const overrides = {
   colors: {
@@ -33,7 +34,7 @@ function App() {
   const [isInitialTheme, setisInitialTheme] = useState(true);
 
   const removeToast = ({ id: removeToastId }: { id: string }) => {
-    dispatch(setToasts(toasts.filter((toast) => toast.id === removeToastId)));
+    dispatch(setToasts(toasts.filter((toast) => toast.id !== removeToastId)));
   };
 
   useEffect(() => {
@@ -72,6 +73,11 @@ function App() {
             <Route
               path="/create-1-on-1"
               element={<OneOnOneMeeting />}
+            />
+
+            <Route
+              path="/video-conference"
+              element={<VideoConference />}
             />
 
             <Route
