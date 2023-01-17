@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { EuiProvider, EuiThemeColorMode, EuiThemeProvider } from '@elastic/eui';
+import {
+  EuiGlobalToastList,
+  EuiProvider,
+  EuiThemeColorMode,
+  EuiThemeProvider,
+} from '@elastic/eui';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 
@@ -8,9 +13,9 @@ import Login from './pages/Login';
 
 import '@elastic/eui/dist/eui_theme_light.min.css';
 import '@elastic/eui/dist/eui_theme_dark.min.css';
-import { switchDarkTheme } from './store/slices/AuthSlice';
 import CreateMeeting from './pages/CreateMeeting';
 import OneOnOneMeeting from './pages/OneOnOneMeeting';
+import { setToasts } from './store/slices/MeetingSlice';
 
 const overrides = {
   colors: {
@@ -21,10 +26,15 @@ const overrides = {
 
 function App() {
   const isDarkTheme = useAppSelector((state) => state.auth.isDarkTheme);
+  const toasts = useAppSelector((state) => state.meetings.toasts);
   const dispatch = useAppDispatch();
 
   const [theme, setTheme] = useState<EuiThemeColorMode>('light');
   const [isInitialTheme, setisInitialTheme] = useState(true);
+
+  const removeToast = ({ id: removeToastId }: { id: string }) => {
+    dispatch(setToasts(toasts.filter((toast) => toast.id === removeToastId)));
+  };
 
   useEffect(() => {
     const localTheme = localStorage.getItem('zoom-theme');
@@ -75,6 +85,11 @@ function App() {
             />
           </Routes>
         </BrowserRouter>
+        <EuiGlobalToastList
+          toasts={toasts}
+          dismissToast={removeToast}
+          toastLifeTimeMs={5000}
+        />
       </EuiThemeProvider>
     </EuiProvider>
   );

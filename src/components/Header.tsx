@@ -17,7 +17,10 @@ import React, {
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { switchDarkTheme } from '../store/slices/AuthSlice';
-import { getCreateMeetingsBreadCrumbs } from '../utils/breadCrumbs';
+import {
+  getCreateMeetingsBreadCrumbs,
+  getOneOnOneMeetingBreadCrumbs,
+} from '../utils/breadCrumbs';
 import { firebaseAuth } from '../utils/firebaseConfig';
 
 function Header() {
@@ -37,6 +40,8 @@ function Header() {
     const { pathname } = location;
     if (pathname === '/create')
       setBreadcrumbs(getCreateMeetingsBreadCrumbs(navigate));
+    else if (pathname === '/create-1-on-1')
+      setBreadcrumbs(getOneOnOneMeetingBreadCrumbs(navigate));
   }, [location, navigate]);
 
   const invertTheme = useCallback(() => {

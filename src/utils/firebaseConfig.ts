@@ -21,3 +21,4 @@ export const firebaseAuth = getAuth(app);
 export const firebaseDB = getFirestore(app);
 
 export const userCollectionRef = collection(firebaseDB, 'user');
+export const meetingCollectionRef = collection(firebaseDB, 'meeting');

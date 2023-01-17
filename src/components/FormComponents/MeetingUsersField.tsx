@@ -9,6 +9,8 @@ type Props = {
   isClearable: boolean;
   placeholder: string;
   singleSelection: any;
+  isInvalid: boolean;
+  error: string[];
 };
 
 function MeetingUsersField({
@@ -19,10 +21,17 @@ function MeetingUsersField({
   placeholder,
   selectedOptions,
   singleSelection = false,
+  isInvalid,
+  error,
 }: Props) {
   return (
-    <EuiFormRow label={label}>
+    <EuiFormRow
+      label={label}
+      isInvalid={isInvalid}
+      error={error}
+    >
       <EuiComboBox
+        isInvalid={isInvalid}
         options={options}
         onChange={onChange}
         selectedOptions={selectedOptions}

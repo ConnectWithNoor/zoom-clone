@@ -10,3 +10,13 @@ export type UserType = {
   uid: string;
   label?: string;
 };
+
+export type FieldErrorType = {
+  show: boolean;
+  message: string[];
+};
+export type ToastType = {
+  id: string;
+  title: string;
+  color: 'success' | 'primary' | 'warning' | 'danger' | undefined;
+};

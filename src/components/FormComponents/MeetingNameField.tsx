@@ -6,6 +6,8 @@ type Props = {
   placeholder: string;
   value: string;
   setMeetingName: React.Dispatch<React.SetStateAction<string>>;
+  isInvalid: boolean;
+  error: string[];
 };
 
 function MeetingNameField({
@@ -13,13 +15,20 @@ function MeetingNameField({
   placeholder,
   value,
   setMeetingName,
+  isInvalid,
+  error,
 }: Props) {
   return (
-    <EuiFormRow label={label}>
+    <EuiFormRow
+      label={label}
+      isInvalid={isInvalid}
+      error={error}
+    >
       <EuiFieldText
         placeholder={placeholder}
         value={value}
         onChange={(e) => setMeetingName(e.target.value)}
+        isInvalid={isInvalid}
       />
     </EuiFormRow>
   );
