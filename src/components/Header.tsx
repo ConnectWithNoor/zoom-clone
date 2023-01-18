@@ -19,6 +19,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { switchDarkTheme } from '../store/slices/AuthSlice';
 import {
   getCreateMeetingsBreadCrumbs,
+  getMeetingsBreadCrumbs,
   getMyMeetingsBreadCrumbs,
   getOneOnOneMeetingBreadCrumbs,
   getVideoConferenceBreadCrumbs,
@@ -48,6 +49,8 @@ function Header() {
       setBreadcrumbs(getVideoConferenceBreadCrumbs(navigate));
     else if (pathname === '/my-meetings')
       setBreadcrumbs(getMyMeetingsBreadCrumbs(navigate));
+    else if (pathname === '/meetings')
+      setBreadcrumbs(getMeetingsBreadCrumbs(navigate));
   }, [location, navigate]);
 
   const invertTheme = useCallback(() => {

@@ -70,3 +70,18 @@ export const getMyMeetingsBreadCrumbs = (
     },
   ];
 };
+
+export const getMeetingsBreadCrumbs = (
+  navigate: NavigateFunction
+): BreadCrumbsType[] => {
+  return [
+    {
+      text: 'Dashboard',
+      href: '#',
+      onClick: () => navigate('/'),
+    },
+    {
+      text: 'Meetings',
+    },
+  ];
+};
