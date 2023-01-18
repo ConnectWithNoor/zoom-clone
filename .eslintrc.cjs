@@ -28,6 +28,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     'no-console': 'warn',
     '@typescript-eslint/no-non-null-assertion': 'off',
+    'react/require-default-props': 'off',
   },
   settings: {
     react: {

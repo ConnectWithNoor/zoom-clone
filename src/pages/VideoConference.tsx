@@ -28,8 +28,8 @@ function VideoConference() {
   useAuth();
   const users = useFetchUsers();
   const navigate = useNavigate();
-  const uid = useAppSelector((state) => state.auth.userInfo?.uid);
   const [createToast] = useToast();
+  const uid = useAppSelector((state) => state.auth.userInfo?.uid);
   const [meetingName, setMeetingName] = useState('');
   const [selectedUsers, setSelectedUsers] = useState<UserType[]>([]);
   const [startDate, setStartDate] = useState(moment());

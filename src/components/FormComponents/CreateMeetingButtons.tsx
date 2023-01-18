@@ -4,9 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 type Props = {
   createMeeting: () => void;
+  isEdit?: boolean;
+  closeFlyout?: () => void;
 };
 
-function CreateMeetingButtons({ createMeeting }: Props) {
+function CreateMeetingButtons({ createMeeting, isEdit, closeFlyout }: Props) {
   const navigate = useNavigate();
   return (
     <EuiFlexGroup>
@@ -14,7 +16,9 @@ function CreateMeetingButtons({ createMeeting }: Props) {
         <EuiButton
           color="danger"
           fill
-          onClick={() => navigate('/')}
+          onClick={() =>
+            isEdit && closeFlyout ? closeFlyout() : navigate('/')
+          }
         >
           Cancel
         </EuiButton>
@@ -25,7 +29,7 @@ function CreateMeetingButtons({ createMeeting }: Props) {
           fill
           onClick={createMeeting}
         >
-          Submit
+          {isEdit ? 'Edit Meeting' : 'Create Meeting'}
         </EuiButton>
       </EuiFlexItem>
     </EuiFlexGroup>

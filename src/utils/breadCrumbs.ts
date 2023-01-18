@@ -55,3 +55,18 @@ export const getVideoConferenceBreadCrumbs = (
     },
   ];
 };
+
+export const getMyMeetingsBreadCrumbs = (
+  navigate: NavigateFunction
+): BreadCrumbsType[] => {
+  return [
+    {
+      text: 'Dashboard',
+      href: '#',
+      onClick: () => navigate('/'),
+    },
+    {
+      text: 'My Meetings',
+    },
+  ];
+};
