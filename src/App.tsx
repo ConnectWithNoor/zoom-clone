@@ -18,6 +18,7 @@ import OneOnOneMeeting from './pages/OneOnOneMeeting';
 import { setToasts } from './store/slices/MeetingSlice';
 import VideoConference from './pages/VideoConference';
 import MyMeetings from './pages/MyMeetings';
+import Meeting from './pages/Meeting';
 
 const overrides = {
   colors: {
@@ -84,6 +85,11 @@ function App() {
             <Route
               path="/my-meetings"
               element={<MyMeetings />}
+            />
+
+            <Route
+              path="/meetings"
+              element={<Meeting />}
             />
 
             <Route
