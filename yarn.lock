@@ -1329,6 +1329,11 @@
     magic-string "^0.27.0"
     react-refresh "^0.14.0"
 
+"@zegocloud/zego-uikit-prebuilt@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@zegocloud/zego-uikit-prebuilt/-/zego-uikit-prebuilt-1.6.2.tgz#e68e83cc28a3bc0b7bb1571058cc944361e9cf5b"
+  integrity sha512-6nnhh9upE63tuhmI31IFboC18f3Hh63OtUnUTXkqiAibTAcjZaKorYQ1jjF9O+xfaiGHyiH8dJBqWhOri5MTSg==
+
 acorn-jsx@^5.3.2:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/acorn-jsx/-/acorn-jsx-5.3.2.tgz#7ed5bb55908b3b2f1bc55c6af1653bada7f07937"
@@ -3295,7 +3300,7 @@ react-clientside-effect@^1.2.6:
   dependencies:
     "@babel/runtime" "^7.12.13"
 
-react-dom@^17.2.0:
+react-dom@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.2.tgz#ecffb6845e3ad8dbfcdc498f0d0a939736502c23"
   integrity sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
@@ -3454,7 +3459,7 @@ react-window@^1.8.6:
     "@babel/runtime" "^7.0.0"
     memoize-one ">=3.1.1 <6"
 
-react@^17.2.0:
+react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
