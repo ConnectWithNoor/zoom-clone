@@ -1,5 +1,5 @@
 /* eslint-disable no-else-return */
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   EuiBadge,
   EuiBasicTable,
@@ -11,7 +11,7 @@ import {
 } from '@elastic/eui';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { getDocs, query, where } from 'firebase/firestore';
+import { getDocs, query } from 'firebase/firestore';
 import Header from '../components/Header';
 import useAuth from '../hooks/useAuth';
 import { useAppSelector } from '../store/hooks';

@@ -89,7 +89,6 @@ function JoinMeeting() {
   });
 
   const myMeeting = async (element: any) => {
-    console.log(element);
     const appId = import.meta.env.VITE_ZEGO_CLOUD_APP_ID;
     const serverSecret = import.meta.env.VITE_ZEGO_CLOUD_SERVER_SECRET;
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(

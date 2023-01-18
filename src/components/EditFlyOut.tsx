@@ -15,7 +15,6 @@ import {
 import useAuth from '../hooks/useAuth';
 import useFetchUsers from '../hooks/useFetchUsers';
 import useToast from '../hooks/useToast';
-import { useAppSelector } from '../store/hooks';
 import { FieldErrorType, MeetingType, UserType } from '../utils/types';
 import { firebaseDB } from '../utils/firebaseConfig';
 

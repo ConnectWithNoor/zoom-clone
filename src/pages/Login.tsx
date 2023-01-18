@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import {
   EuiButton,
   EuiFlexGroup,
@@ -11,11 +11,7 @@ import {
   EuiTextColor,
 } from '@elastic/eui';
 import { useNavigate } from 'react-router-dom';
-import {
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithPopup,
-} from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { addDoc, getDocs, query, where } from 'firebase/firestore';
 
 import { firebaseAuth, userCollectionRef } from '../utils/firebaseConfig';

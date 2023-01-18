@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { setToasts } from '../store/slices/MeetingSlice';
 import { ToastType } from '../utils/types';
